@@ -1,0 +1,47 @@
+SINGLETON SCOPE:
+
+  - default scope is always singleton. 
+  - the Spring IoC container will create (1) one instance of the 
+    object defined by the bean definition if set to singleton
+  - to set something as singleton... 
+    <bean id = "..." class = "..." scope = "singleton"> in the bean.xml file
+  - for stateless beans (singleton, initialized once, state = shared)
+  
+  In this project, output was successfully:
+  		Your Message : I'm object A
+		Your Message : I'm object A
+		
+		<had this output because there was one instance for something getting set 
+		(objA), and because there was nothing else being set for the instances, 
+		and because it's a singleton type, objA was outputted twice)>
+  
+ 
+ PROTOTYPE SCOPE:
+  - Spring IoC container creates a new bean instance of object every time 
+    a request for it is name. 
+  - <bean id = "..." class = "..." scope = "prototype">
+  - for stateful beans (carry state[aka instance variables]; created every
+    time an object is required )
+    
+  In this project, output was successfully:
+  		Your Message : I'm object A
+		Your Message : null
+		
+		<had this output because objA is requested, so it has the output, but objB
+		isn't (there is no setter) so the outcome is null for the second instance>
+		
+"to force Spring to produce a new bean instance each time one is needed, you should 
+declare the bean's scope attribute to be prototype. Similarly, if you want Spring to 
+return the same bean instance each time one is needed, you should declare the bean's
+scope attribute to be singleton."
+		
+OTHER SCOPE TYPES: 
+	request, This scopes a bean definition to an HTTP request. Only valid in the 
+			 context of a web-aware Spring ApplicationContext.
+	session, This scopes a bean definition to an HTTP session. Only valid in the 
+			 context of a web-aware Spring ApplicationContext.
+	global-session, This scopes a bean definition to a global HTTP session. 
+			 Only valid in the context of a web-aware Spring ApplicationContext.
+
+(aka we don't have the means or the knowledge to do these other types now)
+

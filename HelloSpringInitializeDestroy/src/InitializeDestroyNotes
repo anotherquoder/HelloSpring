@@ -1,0 +1,3 @@
+bean = instantiated --> some initialization may be needed to get it into a stable state
+bean = destroyed --> some cleanup may be needed
+
