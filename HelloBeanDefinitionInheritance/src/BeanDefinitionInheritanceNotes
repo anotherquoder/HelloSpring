@@ -1,0 +1,4 @@
+Spring Bean def. inheritance has *nothing* to do with Java class inheritance;
+child bean defs inherit config data from a parent def. child def can override
+some values + add other values. 
+- in xml, indicate child bean def by using parent attribute. 

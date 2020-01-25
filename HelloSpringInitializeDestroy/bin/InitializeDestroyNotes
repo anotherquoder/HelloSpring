@@ -1,3 +1,22 @@
 bean = instantiated --> some initialization may be needed to get it into a stable state
 bean = destroyed --> some cleanup may be needed
 
+* have to declare the <bean> with initmethod and/or destroy-method parameters
+initmethod- calls upon a method that's call on the bean on instantiation
+destroymethod- calls upon a method that's call on the bean before removal from container
+
+InitializingBean and DisposableBEan are built-in/given for free(?)
+
+INIT-METHOD
+	xml based configuration
+		<bean id = "exampleBean" class = "examples.ExampleBean" init-method = "init"/>
+	class definition
+		public class ExampleBean {
+  			public void init() {
+      			// do some initialization work
+   			}
+		}
+		
+(destroy is similar but for destruction and destroy-method)
+using default-init-method or default-destroy-method will ensure those init methods and destroy method
+for all the beans that you require. they are outside + before the <bean id = "..." > etc. 
